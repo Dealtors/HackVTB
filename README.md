@@ -1,4 +1,6 @@
 "# HackVTB" 
+![Архитектура системы](docs/images/architecture.png)
+
 ```mermaid
 erDiagram
     users {
