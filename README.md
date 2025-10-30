@@ -1,5 +1,5 @@
 "# HackVTB" 
-![Архитектура системы](docs/images/architecture.png)
+![Архитектура системы](docs/images/Architecture.png)
 
 ```mermaid
 erDiagram
