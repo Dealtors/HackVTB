@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="966b2b9a-5903-4e5a-9361-ce324917676d" name="Changes" comment="new import:&#10;ApiResponse&#10;CorsConfig&#10;HealthController&#10;SwaggerConfig">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/orchestra/api/model/user/UserRoleId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/init.sql" afterDir="false" />
+    <list default="true" id="966b2b9a-5903-4e5a-9361-ce324917676d" name="Changes" comment="new update:&#10;ApiResponse&#10;application.yml&#10;init.sql&#10;pom.xml&#10;Role.java&#10;SecurityConfig.java&#10;User.java&#10;UserRole.java&#10;UserRoleId.Java&#10;UserSession.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/init2.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orchestra/api/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orchestra/api/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orchestra/api/dto/response/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orchestra/api/dto/response/ApiResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orchestra/api/model/user/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orchestra/api/model/user/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orchestra/api/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orchestra/api/model/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orchestra/api/model/user/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orchestra/api/model/user/UserRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/orchestra/api/model/user/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/orchestra/api/model/user/UserSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +140,7 @@
       <option name="presentableId" value="Default" />
       <updated>1761835388828</updated>
       <workItem from="1761887783081" duration="813000" />
-      <workItem from="1761888607387" duration="9999000" />
+      <workItem from="1761888607387" duration="10625000" />
     </task>
     <task id="LOCAL-00001" summary="new import:&#10;ApiResponse&#10;CorsConfig&#10;HealthController&#10;SwaggerConfig">
       <option name="closed" value="true" />
@@ -162,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761890315929</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="new update:&#10;ApiResponse&#10;application.yml&#10;init.sql&#10;pom.xml&#10;Role.java&#10;SecurityConfig.java&#10;User.java&#10;UserRole.java&#10;UserRoleId.Java&#10;UserSession.java">
+      <option name="closed" value="true" />
+      <created>1761898777423</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761898777423</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +177,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new import:&#10;ApiResponse&#10;CorsConfig&#10;HealthController&#10;SwaggerConfig" />
-    <option name="LAST_COMMIT_MESSAGE" value="new import:&#10;ApiResponse&#10;CorsConfig&#10;HealthController&#10;SwaggerConfig" />
+    <MESSAGE value="new update:&#10;ApiResponse&#10;application.yml&#10;init.sql&#10;pom.xml&#10;Role.java&#10;SecurityConfig.java&#10;User.java&#10;UserRole.java&#10;UserRoleId.Java&#10;UserSession.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="new update:&#10;ApiResponse&#10;application.yml&#10;init.sql&#10;pom.xml&#10;Role.java&#10;SecurityConfig.java&#10;User.java&#10;UserRole.java&#10;UserRoleId.Java&#10;UserSession.java" />
   </component>
 </project>
