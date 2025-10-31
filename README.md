@@ -219,7 +219,8 @@ erDiagram
     users ||--o{ test_executions : starts
 ```
 #### Диаграмма таблиц из new.sql
-```erDiagram
+```mermaid
+erDiagram
 
     PROCESS_DIAGRAM ||--o{ PROCESS_STEP : contains
     PROCESS_STEP ||--o{ PROCESS_TRANSITION : links_to
