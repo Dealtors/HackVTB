@@ -7,7 +7,11 @@ public class ApiResponse<T> {
     private T data;
     private LocalDateTime timestamp;
 
-    // Геттеры и сеттеры (можно добавить lombok @Data)
+    // Геттеры
+    public boolean isSuccess() { return success; }
+    public String getMessage() { return message; }
+    public T getData() { return data; }
+    public LocalDateTime getTimestamp() { return timestamp; }
 
     public static <T> ApiResponse<T> success(T data) {
         ApiResponse<T> response = new ApiResponse<>();
