@@ -6,12 +6,17 @@ server:
     context-path: /api
 
 spring:
+  spring:
+    security:
+      user:
+        name: admin
+        password: admin
   application:
     name: orchestra-api
   datasource:
     url: jdbc:postgresql://localhost:5432/orchestra_db
     username: postgres
-    password: password
+    password: postgres
   jpa:
     hibernate:
       ddl-auto: validate
