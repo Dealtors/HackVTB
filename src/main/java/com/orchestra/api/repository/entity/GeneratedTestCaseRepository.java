@@ -1,5 +1,11 @@
-package com.orchestra.api.entity;
+package com.orchestra.api.repository.entity;
 
-public interface GeneratedTestCaseRepository {
+import java.util.UUID;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.orchestra.api.entity.GeneratedTestCaseEntity;
+
+public interface GeneratedTestCaseRepository extends JpaRepository<GeneratedTestCaseEntity, UUID>{
 
 }
