@@ -109,6 +109,13 @@
             <version>6.8.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.camunda.bpm.model</groupId>
+            <artifactId>camunda-bpmn-model</artifactId>
+            <version>7.21.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
