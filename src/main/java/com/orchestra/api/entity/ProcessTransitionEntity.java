@@ -44,4 +44,9 @@ public class ProcessTransitionEntity {
 
     public ProcessStepEntity getToStep() { return toStep; }
     public void setToStep(ProcessStepEntity toStep) { this.toStep = toStep; }
+
+    public String getCondition() {
+        // TODO: implement condition field if needed
+        return null;
+    }
 }

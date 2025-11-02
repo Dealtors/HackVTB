@@ -2,6 +2,8 @@ package com.orchestra.api.entity;
 
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import java.util.UUID;
 
 @Entity
@@ -20,9 +22,11 @@ public class GeneratedTestDataEntity {
     @JoinColumn(name = "step_id")
     private ProcessStepEntity step;
 
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private String requestPayload;
 
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private String responseExpected;
 

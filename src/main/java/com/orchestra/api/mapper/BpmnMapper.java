@@ -1,5 +1,8 @@
 package com.orchestra.api.mapper;
 
+import com.orchestra.api.dto.response.BpmnDiagramResponse;
+import com.orchestra.api.dto.response.StepResponse;
+import com.orchestra.api.dto.response.TransitionResponse;
 import com.orchestra.api.entity.ProcessDiagramEntity;
 import com.orchestra.api.model.core.BpmnElement;
 import com.orchestra.api.model.project.BpmnDiagram;
@@ -12,9 +15,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.orchestra.api.entity.ProcessStepEntity;
 import com.orchestra.api.entity.ProcessTransitionEntity;
 
+@Component
 public class BpmnMapper {
 
     public ProcessDiagramEntity toEntity(BpmnDiagram model) {
@@ -73,14 +82,79 @@ public class BpmnMapper {
             return diagramEntity;
         }
 
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
     private String serializeNextSteps(List<String> nextSteps) {
-        return nextSteps == null ? "[]" : String.join(",", nextSteps);
+        if (nextSteps == null || nextSteps.isEmpty()) {
+            return "[]";
+        }
+        try {
+            return objectMapper.writeValueAsString(nextSteps);
+        } catch (JsonProcessingException e) {
+            // Fallback to simple JSON array
+            return "[]";
+        }
     }
 
     private List<String> deserializeNextSteps(String nextSteps) {
-        return nextSteps == null || nextSteps.isEmpty()
-                ? List.of()
-                : Arrays.asList(nextSteps.split(","));
+        if (nextSteps == null || nextSteps.isEmpty() || "[]".equals(nextSteps)) {
+            return List.of();
+        }
+        try {
+            return objectMapper.readValue(nextSteps, new TypeReference<List<String>>() {});
+        } catch (JsonProcessingException e) {
+            // Fallback: try to parse as comma-separated string
+            if (nextSteps.startsWith("[") && nextSteps.endsWith("]")) {
+                // Remove brackets and split
+                String content = nextSteps.substring(1, nextSteps.length() - 1);
+                if (content.isEmpty()) {
+                    return List.of();
+                }
+                return Arrays.asList(content.split(","));
+            }
+            return Arrays.asList(nextSteps.split(","));
+        }
     }
+
+    public BpmnDiagramResponse toResponse(ProcessDiagramEntity diagram) {
+        List<StepResponse> stepResponses = diagram.getSteps().stream()
+                .map(this::toStepResponse)
+                .toList();
+
+        List<TransitionResponse> transitionResponses = diagram.getTransitions().stream()
+                .map(this::toTransitionResponse)
+                .toList();
+
+        return new BpmnDiagramResponse(
+                diagram.getId(),
+                diagram.getName(),
+                diagram.getType(),
+                diagram.getStatus(),
+                stepResponses,
+                transitionResponses
+        );
+    }
+
+    private StepResponse toStepResponse(ProcessStepEntity step) {
+        return new StepResponse(
+                step.getId(),
+                step.getStepId(),
+                step.getName(),
+                step.getAction(),
+                step.getActorFrom(),
+                step.getActorTo(),
+                deserializeNextSteps(step.getNextSteps())
+        );
+    }
+
+    private TransitionResponse toTransitionResponse(ProcessTransitionEntity t) {
+        return new TransitionResponse(
+                t.getFromStep().getStepId(),
+                t.getToStep().getStepId(),
+                t.getCondition()
+        );
+    }
+
+
 
 }
