@@ -19,12 +19,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/health").permitAll()
-                .requestMatchers("/bpmn/**").permitAll()
-                .anyRequest().authenticated()
-            )
-            .httpBasic();
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/health", "/swagger-ui/**", "/v3/api-docs/**",
+                                "/bpmn/**", "/sequence/**", "/openapi/**").permitAll()
+                        .anyRequest().authenticated())
+                .httpBasic();
         return http.build();
     }
 
