@@ -21,7 +21,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/health", "/swagger-ui/**", "/v3/api-docs/**",
-                                "/bpmn/**", "/sequence/**", "/openapi/**").permitAll()
+                                "/bpmn/**", "/sequence/**", "/openapi/**", "/api/openapi/**", "/api/bpmn/**", "/api/sequence/**").permitAll()
                         .anyRequest().authenticated())
                 .httpBasic();
         return http.build();

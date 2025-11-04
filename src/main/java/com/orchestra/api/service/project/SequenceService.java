@@ -47,11 +47,17 @@ public class SequenceService {
     public SequenceDiagramResponse uploadSequence(String name, String format, MultipartFile file) throws Exception {
         if (file == null || file.isEmpty()) throw new IllegalArgumentException("Empty file");
 
+        String effectiveName = (name != null && !name.isBlank())
+                ? name
+                : (file.getOriginalFilename() != null && !file.getOriginalFilename().isBlank()
+                    ? file.getOriginalFilename()
+                    : "Sequence");
+
         // 1) Save raw
         UUID rawId = UUID.randomUUID();
         SequenceDiagramRawEntity raw = new SequenceDiagramRawEntity();
         raw.setId(rawId);
-        raw.setName(name);
+        raw.setName(effectiveName);
         raw.setFormat(format);
         raw.setRawContent(new String(file.getBytes(), StandardCharsets.UTF_8));
         raw.setCreatedAt(LocalDateTime.now());
@@ -64,7 +70,7 @@ public class SequenceService {
         UUID dId = UUID.randomUUID();
         ProcessDiagramEntity d = new ProcessDiagramEntity();
         d.setId(dId);
-        d.setName(name != null ? name : "Sequence");
+        d.setName(effectiveName);
         d.setType("SEQUENCE");
         d.setStatus("READY");
         d.setCreatedAt(LocalDateTime.now());

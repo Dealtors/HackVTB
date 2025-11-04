@@ -87,6 +87,25 @@ CREATE TABLE IF NOT EXISTS generated_test_data (
     response_expected JSONB
 );
 
+-- Raw storage for sequence source
+CREATE TABLE IF NOT EXISTS sequence_diagrams (
+  id UUID PRIMARY KEY,
+  name TEXT,
+  format VARCHAR(20), -- PLANTUML | MERMAID | CMMN
+  raw_content TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Raw storage for OpenAPI source
+CREATE TABLE IF NOT EXISTS openapi_specs (
+  id UUID PRIMARY KEY,
+  name TEXT,
+  file_name TEXT,
+  spec_json JSONB NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+
 CREATE INDEX IF NOT EXISTS idx_testdata_case ON generated_test_data(test_case_id);
 CREATE INDEX IF NOT EXISTS idx_testdata_step ON generated_test_data(step_id);
 
