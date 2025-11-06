@@ -5,6 +5,23 @@
 
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+CREATE EXTENSION IF NOT EXISTS citext;
+
+-- пользователи
+CREATE TABLE IF NOT EXISTS users (
+  id         UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name       TEXT NOT NULL,
+  email      CITEXT NOT NULL UNIQUE,
+  password   TEXT NOT NULL,                  -- BCrypt
+  role       VARCHAR(20) NOT NULL,           -- USER | ADMIN
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- демо-аккаунт: email demo@orchestra.local / пароль Demo123!
+INSERT INTO users (name, email, password, role)
+VALUES ('Demo User', 'demo@orchestra.local', crypt('Demo123!', gen_salt('bf')), 'USER')
+ON CONFLICT (email) DO NOTHING;
 
 -- ============================================
 -- 1. Table: process_diagram

@@ -1,4 +1,3 @@
 package com.orchestra.api.dto.request;
 
-public class LoginRequest {
-}
+public record LoginRequest(String email, String password) {}

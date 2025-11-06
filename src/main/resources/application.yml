@@ -13,9 +13,9 @@ spring:
   application:
     name: orchestra-api
   datasource:
-    url: jdbc:postgresql://localhost:5432/orchestra_db
+    url: jdbc:postgresql://localhost:5433/orchestra_db
     username: postgres
-    password: password
+    password: postgres
     hikari:
       connectionInitSql: "SET client_encoding TO 'UTF8'"
   jpa:
