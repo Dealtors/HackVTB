@@ -19,8 +19,12 @@ public class OpenApiController {
     public OpenApiController(OpenApiService service) { this.service = service; }
 
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<OpenApiUploadResponse> upload(@RequestParam("file") MultipartFile file,
-                                                        @RequestParam(value = "name", required = false) String name) throws Exception {
-        return ResponseEntity.ok(service.upload(file, name));
+    public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file,
+                                    @RequestParam(value = "name", required = false) String name) {
+        try {
+            return ResponseEntity.ok(service.upload(file, name));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to parse OpenAPI: " + e.getMessage());
+        }
     }
 }
